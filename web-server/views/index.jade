@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  h3#phrase= quote.phrase
+  script(src='/socket.io/socket.io.js')
+  script.
+    var socket = io();
+    socket.on('timeout', function(quote){
+      document.getElementById('phrase').innerHTML = quote.phrase;
+    });
