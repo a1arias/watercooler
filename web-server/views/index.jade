@@ -21,15 +21,12 @@ block content
     socket.on('timeout', function(quote){
       document.getElementById('thequote').innerHTML = quote.phrase;
       document.getElementById('thePerson').innerHTML = quote.contributor;
-    });
-  script.
-    $(function() {
       var rand = Math.floor(Math.random() * 10);
       if(rand > 7.5) {
-        $('#container-left').css('background', 'url("images/coolerwomanpng") no-repeat');
+        $('#container-left').css('background', 'url("/images/coolerwoman2.png") no-repeat');
       } else if (rand > 5) {
-        $('#container-left').css('background', 'url("images/coolerman.png"no-repeat');
+        $('#container-left').css('background', 'url("/images/coolerman.png") no-repeat');
       } else if (rand > 2.5) {
-        $('#container-left').css('background', 'url("images/coolerman2.png"no-repeat');
+        $('#container-left').css('background', 'url("/images/coolerman2.png") no-repeat');
       }
     });
