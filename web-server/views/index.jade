@@ -1,12 +1,35 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  h3#phrase= quote.phrase
+  header The CoSo Watercooler
+  div#container-left
+  div#container-right
+    div.content
+      blockquote.triangle-border
+        p
+        // this p has to be here for the speech bubble
+        div#thequote= quote.phrase
+        p
+        // this p has to be here for the speech bubble
+      p
+      div#thePerson= quote.contributor
+      p
   script(src='/socket.io/socket.io.js')
+  script(src='/javascripts/jquery.min.js')
   script.
     var socket = io();
     socket.on('timeout', function(quote){
-      document.getElementById('phrase').innerHTML = quote.phrase;
+      document.getElementById('thequote').innerHTML = quote.phrase;
+      document.getElementById('thePerson').innerHTML = quote.contributor;
+    });
+  script.
+    $(function() {
+      var rand = Math.floor(Math.random() * 10);
+      if(rand > 7.5) {
+        $('#container-left').css('background', 'url("images/coolerwomanpng") no-repeat');
+      } else if (rand > 5) {
+        $('#container-left').css('background', 'url("images/coolerman.png"no-repeat');
+      } else if (rand > 2.5) {
+        $('#container-left').css('background', 'url("images/coolerman2.png"no-repeat');
+      }
     });
