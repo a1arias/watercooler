@@ -5,7 +5,7 @@ var http = require('http')
   , debug = require('debug')('watercooler:web-server:server')
 ;
 
-mongoose.connect('mongodb://localhost/watercooler');
+mongoose.connect('mongodb://localhost/fortune');
 var db = mongoose.connection;
 
 var modelsPath = __dirname + '/../models';

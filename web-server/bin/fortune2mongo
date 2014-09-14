@@ -1,0 +1,21 @@
+#!/bin/bash
+for value in `seq 1 1000`; do FORTUNE="`fortune`"; node -e "
+	var mongoose = require('mongoose');
+	mongoose.connect('mongodb://localhost/fortune')
+	var db = mongoose.connection
+
+	console.log('################')
+	console.log(\"${FORTUNE}\")
+	db.on('error', console.error.bind(console, 'connection error:'));
+
+	db.on('open', function callback(){
+		var Quote = mongoose.model('Quote', {phrase: String})
+		var q = new Quote({phrase: \"${FORTUNE}\"})
+		q.save(function(err){
+			if(err)
+				console.log(err)
+			db.close()
+		})
+	})
+"; done
+
